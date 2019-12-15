@@ -1,0 +1,39 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "project": "./tsconfig.json"
+  },
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb-base",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+    "plugin:jest/style"
+  ],
+  "rules": {
+    "max-len": [
+      "warn",
+      {
+        "ignoreUrls": true,
+        "code": 120,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "@typescript-eslint/indent": ["error", 2],
+    "no-unused-vars": ["error"],
+    "@typescript-eslint/interface-name-prefix": "off",
+    "linebreak-style": "off",
+    "import/prefer-default-export": "off"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".js", ".ts"]
+      }
+    }
+  }
+}
