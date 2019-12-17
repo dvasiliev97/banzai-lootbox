@@ -20,6 +20,12 @@ export interface Item{
   type: ItemType;
 }
 
+/**
+ * 描述
+ * @date 2019-12-16
+ * @param {any} itemRarity:ItemRarity
+ * @returns {any}
+ */
 export function boostRarity(itemRarity: ItemRarity): ItemRarity {
   const highestRarity = Object.keys(ItemRarity).length - 1;
 
@@ -32,20 +38,12 @@ export function boostRarity(itemRarity: ItemRarity): ItemRarity {
   return itemRarity;
 }
 
-function randomEnum<T>(anEnum: T): T[keyof T] {
-  const enumValues = Object.keys(anEnum)
-    .map((n) => Number.parseInt(n, 10))
-    .filter((n) => !Number.isNaN(n)) as unknown as T[keyof T][];
-  const randomIndex = Math.floor(Math.random() * enumValues.length);
-  const randomEnumValue = enumValues[randomIndex];
-  return randomEnumValue;
-}
-
-export function getRandomItemType(): ItemType {
-  const myRandomValue = randomEnum(ItemType);
-  return myRandomValue;
-}
-
+/**
+ * 描述
+ * @date 2019-12-16
+ * @param {any} previousItems:Item[]
+ * @returns {any}
+ */
 export function getFairRandomItemType(previousItems: Item[]): ItemType {
   const fairTypes = _(Object.values(ItemType))
     .map(Number)
@@ -63,24 +61,52 @@ export function getFairRandomItemType(previousItems: Item[]): ItemType {
   return fairType;
 }
 
+/**
+ * 描述
+ * @date 2019-12-16
+ * @param {any} boosterRarity:ItemRarity
+ * @param {any} itemList:Item[]
+ * @returns {any}
+ */
 export function getRandomItemOfConsistentRarity(boosterRarity: ItemRarity, itemList: Item[]): Item {
   const matchingItems = itemList.filter((item) => item.rarity === boosterRarity);
+
   const randomItem = matchingItems[Math.floor(Math.random() * matchingItems.length)];
+
   return randomItem;
 }
 
+/**
+ * 描述
+ * @date 2019-12-16
+ * @param {any} boosterRarity:ItemRarity
+ * @param {any} itemList:Item[]
+ * @returns {any}
+ */
 export function getRandomItemOfFairRarity(boosterRarity: ItemRarity, itemList: Item[]): Item {
   const boostedRarity = boostRarity(boosterRarity);
 
   const matchingItems = itemList.filter((item) => item.rarity === boostedRarity);
+
   const randomItem = matchingItems[Math.floor(Math.random() * matchingItems.length)];
+
   return randomItem;
 }
 
+/**
+ * 描述
+ * @date 2019-12-16
+ * @param {any} boosterRarity:ItemRarity
+ * @param {any} itemList:Item[]
+ * @param {any} itemType:ItemType
+ * @returns {any}
+ */
 export function getRandomItemOfFairRarityAndFixedType(boosterRarity: ItemRarity, itemList: Item[], itemType: ItemType): Item {
   const boostedRarity = boostRarity(boosterRarity);
 
   const matchingItems = itemList.filter((item) => item.rarity === boostedRarity && item.type === itemType);
+
   const randomItem = matchingItems[Math.floor(Math.random() * matchingItems.length)];
+
   return randomItem;
 }

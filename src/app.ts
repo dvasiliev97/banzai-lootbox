@@ -1,23 +1,12 @@
 import _ from 'lodash';
 
-import {
-  ItemRarity,
-} from './models/Item';
-
-import { itemDataBase } from './models/itemDataBase';
-
-import { openFairBoosterpack } from './models/BoosterPack';
+import { ItemRarity } from './models/Item';
 import { Inventory } from './models/Inventory';
+import { openMultipleFairBoosterpacks } from './models/BoosterPack';
+import { itemDataBase } from './models/itemDataBase';
 
 const playerInventory = { items: [] } as Inventory;
 
-for (let i = 0; i < 24; i += 1) {
-  const booster = openFairBoosterpack(ItemRarity.UNCOMMON, itemDataBase, playerInventory);
-  playerInventory.items = _.concat(booster, playerInventory.items);
-}
+playerInventory.items = _.concat(openMultipleFairBoosterpacks(4, ItemRarity.RARE, itemDataBase, playerInventory), playerInventory.items);
 
-const uniquedInventory = _(playerInventory.items)
-  .unionBy('name')
-  .groupBy('rarity')
-  .value();
-console.log(uniquedInventory);
+console.table(playerInventory.items);
