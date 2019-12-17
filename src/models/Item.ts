@@ -26,7 +26,7 @@ export interface Item{
  * @param {ItemRarity} itemRarity базовая редкость предмета
  * @returns {ItemRarity} улучшенная редкость
  */
-export function boostRarity(itemRarity: ItemRarity): ItemRarity {
+function boostRarity(itemRarity: ItemRarity): ItemRarity {
   const highestRarity = Object.keys(ItemRarity).length - 1;
 
   const boostProbability = Math.random();
@@ -44,7 +44,7 @@ export function boostRarity(itemRarity: ItemRarity): ItemRarity {
  * @param {Item[]} previousItems предметы, полученные до вызова функции
  * @returns {ItemType} честный тип предмета
  */
-export function getFairRandomItemType(previousItems: Item[]): ItemType {
+function getFairRandomItemType(previousItems: Item[]): ItemType {
   const fairTypes = _(Object.values(ItemType))
     .map(Number)
     .without(NaN)
@@ -67,7 +67,7 @@ export function getFairRandomItemType(previousItems: Item[]): ItemType {
  * @param {Item[]} itemList список предметов в игре (дополнении к игре), из которого падают предметы
  * @returns {Item} случайный предмет
  */
-export function getRandomItemOfConsistentRarity(boosterRarity: ItemRarity, itemList: Item[]): Item {
+function getRandomItemOfConsistentRarity(boosterRarity: ItemRarity, itemList: Item[]): Item {
   const matchingItems = itemList.filter((item) => item.rarity === boosterRarity);
 
   const randomItem = matchingItems[Math.floor(Math.random() * matchingItems.length)];
@@ -81,7 +81,7 @@ export function getRandomItemOfConsistentRarity(boosterRarity: ItemRarity, itemL
  * @param {Item[]} itemList список предметов в игре (дополнении к игре), из которого падают предметы
  * @returns {Item} случайный предмет
  */
-export function getRandomItemOfFairRarity(boosterRarity: ItemRarity, itemList: Item[]): Item {
+function getRandomItemOfFairRarity(boosterRarity: ItemRarity, itemList: Item[]): Item {
   const boostedRarity = boostRarity(boosterRarity);
 
   const matchingItems = itemList.filter((item) => item.rarity === boostedRarity);
@@ -98,7 +98,7 @@ export function getRandomItemOfFairRarity(boosterRarity: ItemRarity, itemList: I
  * @param {ItemType} itemType тип предмета
  * @returns {Item} случайный предмет
  */
-export function getRandomItemOfFairRarityAndFixedType(boosterRarity: ItemRarity, itemList: Item[], itemType: ItemType): Item {
+function getRandomItemOfFairRarityAndFixedType(boosterRarity: ItemRarity, itemList: Item[], itemType: ItemType): Item {
   const boostedRarity = boostRarity(boosterRarity);
 
   const matchingItems = itemList.filter((item) => item.rarity === boostedRarity && item.type === itemType);
@@ -107,3 +107,10 @@ export function getRandomItemOfFairRarityAndFixedType(boosterRarity: ItemRarity,
 
   return randomItem;
 }
+
+export {
+  getFairRandomItemType,
+  getRandomItemOfConsistentRarity,
+  getRandomItemOfFairRarity,
+  getRandomItemOfFairRarityAndFixedType,
+};

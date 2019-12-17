@@ -17,7 +17,7 @@ import { Inventory } from './Inventory';
  * @param {Item[]} itemList список предметов в игре (дополнении к игре), из которого падают предметы
  * @returns {Item[]} предметы, полученные из бустерпака
  */
-export function openInconsistentBoosterpack(boosterRarity: ItemRarity, itemList: Item[]): Item[] {
+function openInconsistentBoosterpack(boosterRarity: ItemRarity, itemList: Item[]): Item[] {
   const boosterpackItems: Item[] = [];
 
   boosterpackItems.push(getRandomItemOfFairRarity(boosterRarity, itemList));
@@ -36,7 +36,7 @@ export function openInconsistentBoosterpack(boosterRarity: ItemRarity, itemList:
  * @param {Item[]} itemList список предметов в игре (дополнении к игре), из которого падают предметы
  * @returns {Item[]} предметы, полученные из бустерпака
  */
-export function openConsistentBoosterpack(boosterRarity: ItemRarity, itemList: Item[]): Item[] {
+function openConsistentBoosterpack(boosterRarity: ItemRarity, itemList: Item[]): Item[] {
   const boosterpackItems: Item[] = [];
 
   boosterpackItems.push(getRandomItemOfFairRarityAndFixedType(boosterRarity, itemList, getFairRandomItemType(boosterpackItems)));
@@ -57,7 +57,7 @@ export function openConsistentBoosterpack(boosterRarity: ItemRarity, itemList: I
  * @param {Inventory} inventory инвентарь игрока
  * @returns {Item[]} предметы, полученные из бустерпака
  */
-export function openFairBoosterpack(boosterRarity: ItemRarity, itemList: Item[], inventory: Inventory): Item[] {
+function openFairBoosterpack(boosterRarity: ItemRarity, itemList: Item[], inventory: Inventory): Item[] {
   const boosterpackItems: Item[] = [];
   inventory.items.push();
 
@@ -92,7 +92,7 @@ export function openFairBoosterpack(boosterRarity: ItemRarity, itemList: Item[],
  * @param {Inventory} inventory инвентарь игрока
  * @returns {Item[]} предметы, полученные из бустерпаков
  */
-export function openMultipleFairBoosterpacks(boosterAmout: number, boosterRarity: ItemRarity, itemList: Item[], inventory: Inventory): Item[] {
+function openMultipleFairBoosterpacks(boosterAmout: number, boosterRarity: ItemRarity, itemList: Item[], inventory: Inventory): Item[] {
   let boosterpackItems: Item[] = [];
 
   for (let i = 0; i < boosterAmout; i += 1) {
@@ -102,3 +102,10 @@ export function openMultipleFairBoosterpacks(boosterAmout: number, boosterRarity
 
   return boosterpackItems;
 }
+
+export {
+  openInconsistentBoosterpack,
+  openConsistentBoosterpack,
+  openFairBoosterpack,
+  openMultipleFairBoosterpacks,
+};
