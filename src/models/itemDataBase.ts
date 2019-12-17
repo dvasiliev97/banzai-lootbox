@@ -4,7 +4,6 @@ import { Item, ItemRarity, ItemType } from './Item';
 
 /**
  * Генерирует базу фальшивых предметов с использованием faker.js для имён
- * @date 2019-12-16
  * @returns {Item[]} - Предметы, существующие в игре
  */
 export function generateDummyItemList(): Item[] {

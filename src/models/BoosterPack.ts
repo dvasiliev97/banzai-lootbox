@@ -13,9 +13,9 @@ import { Inventory } from './Inventory';
 /**
  * Функция симулирует открытие inconsistent бустерпака, гарантирующего получение
  * двух предметов редкости boosterRarity и трех предметов редкости boosterRarity - 1
- * @param {ItemRarity} boosterRarity - редкость бустерпака
- * @param {Item[]} itemList - список предметов в игре (дополнении к игре), из которого падают предметы
- * @returns {Item[]} - предметы, полученные из бустерпака
+ * @param {ItemRarity} boosterRarity редкость бустерпака
+ * @param {Item[]} itemList список предметов в игре (дополнении к игре), из которого падают предметы
+ * @returns {Item[]} предметы, полученные из бустерпака
  */
 export function openInconsistentBoosterpack(boosterRarity: ItemRarity, itemList: Item[]): Item[] {
   const boosterpackItems: Item[] = [];
@@ -32,9 +32,9 @@ export function openInconsistentBoosterpack(boosterRarity: ItemRarity, itemList:
 
 /**
  * Функция симулирует открытие consistent бустерпака, гарантирующего получение не более двух предметов одного типа
- * @param {ItemRarity} boosterRarity - редкость бустерпака
- * @param {Item[]} itemList - список предметов в игре (дополнении к игре), из которого падают предметы
- * @returns {Item[]} - предметы, полученные из бустерпака
+ * @param {ItemRarity} boosterRarity редкость бустерпака
+ * @param {Item[]} itemList список предметов в игре (дополнении к игре), из которого падают предметы
+ * @returns {Item[]} предметы, полученные из бустерпака
  */
 export function openConsistentBoosterpack(boosterRarity: ItemRarity, itemList: Item[]): Item[] {
   const boosterpackItems: Item[] = [];
@@ -52,10 +52,10 @@ export function openConsistentBoosterpack(boosterRarity: ItemRarity, itemList: I
 /**
  * Функция симулирует открытие fair бустерпака, гарантирующего получение всех
  * предметов редкости boosterRarity из itemList при открытии нескольких бустерпаков
- * @param {ItemRarity} boosterRarity - редкость бустерпака
- * @param {Item[]} itemList - список предметов в игре (дополнении к игре), из которого падают предметы
- * @param {Inventory} inventory - инвентарь игрока
- * @returns {Item[]} - предметы, полученные из бустерпака
+ * @param {ItemRarity} boosterRarity редкость бустерпака
+ * @param {Item[]} itemList список предметов в игре (дополнении к игре), из которого падают предметы
+ * @param {Inventory} inventory инвентарь игрока
+ * @returns {Item[]} предметы, полученные из бустерпака
  */
 export function openFairBoosterpack(boosterRarity: ItemRarity, itemList: Item[], inventory: Inventory): Item[] {
   const boosterpackItems: Item[] = [];
@@ -86,11 +86,11 @@ export function openFairBoosterpack(boosterRarity: ItemRarity, itemList: Item[],
 
 /**
  * Функция симулирует открытие нескольких fair бустерпаков
- * @param {number} boosterAmout - количество открываемых бустерпаков
- * @param {ItemRarity} boosterRarity - редкость бустерпака
- * @param {Item[]} itemList - список предметов в игре (дополнении к игре), из которого падают предметы
- * @param {Inventory} inventory - инвентарь игрока
- * @returns {Item[]} - предметы, полученные из бустерпаков
+ * @param {number} boosterAmout количество открываемых бустерпаков
+ * @param {ItemRarity} boosterRarity редкость бустерпака
+ * @param {Item[]} itemList список предметов в игре (дополнении к игре), из которого падают предметы
+ * @param {Inventory} inventory инвентарь игрока
+ * @returns {Item[]} предметы, полученные из бустерпаков
  */
 export function openMultipleFairBoosterpacks(boosterAmout: number, boosterRarity: ItemRarity, itemList: Item[], inventory: Inventory): Item[] {
   let boosterpackItems: Item[] = [];
