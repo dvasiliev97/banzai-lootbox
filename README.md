@@ -1,4 +1,4 @@
-# Тестовое задание для Banzai Games
+# Универсальная лутбокс-система
 
 Проект реализует [это тестовое задание](https://drive.google.com/file/d/13VxR410LdtphyVVxx3pJdG3cNSuX_6Y_/view)
 
